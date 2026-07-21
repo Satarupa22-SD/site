@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ .Scratch.Set "brandSuffix" "docs" }}
+{{ .Scratch.Set "activeTab" "start" }}
+<div class="shell">
+  <aside class="sidebar"><div class="sidebar-scroll">{{ partial "sidebar.html" . }}</div></aside>
+  <main class="doc-main">
+    <article class="doc-column">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <div class="prose">{{ .Content }}</div>
+    </article>
+  </main>
+</div>
+{{ end }}

@@ -1,0 +1,56 @@
+{{ define "main" }}
+{{ .Scratch.Set "brandSuffix" "library" }}
+{{ .Scratch.Set "activeTab" "library" }}
+<main class="landing">
+  <section class="hero">
+    <svg class="hero-course" viewBox="0 0 400 300" fill="none" aria-hidden="true">
+      <path d="M40 250 L130 190 L210 210 L290 120 L360 70" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.55"/>
+      <g fill="var(--accent)"><circle cx="40" cy="250" r="3.5"/><circle cx="130" cy="190" r="3.5"/><circle cx="210" cy="210" r="3.5"/><circle cx="290" cy="120" r="3.5"/></g>
+      <g stroke="var(--brass)" stroke-width="1.5" fill="none"><circle cx="360" cy="70" r="7"/><circle cx="360" cy="70" r="2.2" fill="var(--brass)" stroke="none"/></g>
+    </svg>
+    <div class="hero-inner">
+      <div class="eyebrow">Compliance as a data engineering problem</div>
+      <h1>Validate your infrastructure against the standards that <span class="accent">actually apply</span>.</h1>
+      <p>Privateer is a validation framework that runs automated checks, called plugins, against your resources,
+         then writes structured, machine-readable evidence in YAML, JSON, or SARIF. Built to operate at the
+         Evaluation layer of the Gemara GRC engineering model.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="{{ "getting-started/quickstart/" | relURL }}">Get started &rarr;</a>
+        <a class="btn btn-ghost" href="{{ .Site.Params.repoURL }}" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <div class="hero-install"><span class="dollar">$</span>/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/privateer/main/install.sh)"</div>
+      <div class="signal-row">
+        <span class="chip pass">pass</span>
+        <span class="chip fail">fail</span>
+        <span class="chip skip">skip</span>
+        <span class="chip error">error</span>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-label">Getting started</h2>
+  <p class="section-sub">From zero to a control-by-control validation report.</p>
+  <div class="card-grid cols-3">
+    {{ range .Site.Menus.getting_started }}
+    <a class="card{{ if eq .Name "Quickstart (5 minutes)" }} featured{{ end }}" href="{{ .URL | relURL }}">
+      {{ if eq .Name "Quickstart (5 minutes)" }}<span class="badge">Recommended</span>{{ end }}
+      <h3>{{ .Name }}</h3>
+      <p>{{ with site.GetPage .URL }}{{ .Params.description }}{{ end }}</p>
+      {{ partial "icons/arrow.html" }}
+    </a>
+    {{ end }}
+  </div>
+
+  <h2 class="section-label">Developer reference</h2>
+  <p class="section-sub">For plugin authors, contributors, and CI/CD pipeline engineers.</p>
+  <div class="card-grid cols-3">
+    {{ range .Site.Menus.developer_reference }}
+    <a class="card" href="{{ .URL | relURL }}">
+      <h3>{{ .Name }}</h3>
+      <p>{{ with site.GetPage .URL }}{{ .Params.description }}{{ end }}</p>
+      {{ partial "icons/arrow.html" }}
+    </a>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

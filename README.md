@@ -1,61 +1,35 @@
 # Privateer Website
 
-This is the website for the Privateer project, hosted at [privateerproj.com](https://privateerproj.com).
+The website for the Privateer project, hosted at [privateerproj.com](https://privateerproj.com/).
 
-## Technology Stack
+## Stack
 
-- **Hugo** (extended version 0.104.3) - Static site generator
-- **Docsy Theme** - Hugo theme for technical documentation
-- **Netlify** - Hosting and CI/CD
-
-## Prerequisites
-
-- Hugo extended version 0.104.3 or later
-- Go 1.19.2 or later
-- Node.js (for PostCSS processing)
-- Docker (optional, for containerized development)
+- [Hugo](https://gohugo.io/) (extended) — static site generator
+- Custom layouts and partials (no external theme)
+- GitHub Pages — hosting, deployed via GitHub Actions
 
 ## Local Development
 
-### Using Hugo directly
+Requires [Hugo extended](https://gohugo.io/installation/) installed locally.
 
-1. Install dependencies:
-   ```bash
-   npm install
-   hugo mod get
-   ```
+```bash
+hugo server
+```
 
-2. Run the development server:
-   ```bash
-   hugo server
-   ```
-
-3. Open `http://localhost:1313` in your browser
-
-### Using Docker
-
-1. Build and run with Docker Compose:
-   ```bash
-   docker-compose up --build
-   ```
-
-2. Open `http://localhost:1313` in your browser
+Open `http://localhost:1313`.
 
 ## Building
 
-To build the site:
-
 ```bash
-hugo
+hugo --minify
 ```
 
-The output will be in the `public/` directory.
+Output goes to `public/`.
 
 ## Deployment
 
-The site is automatically deployed to Netlify when changes are pushed to the `main` branch.
+Pushes to `main` trigger the `Deploy to GitHub Pages` workflow (`.github/workflows/deploy.yml`), which builds and deploys automatically.
 
 ## License
 
-See LICENSE file for details.
-
+See [LICENSE](./LICENSE) for details.

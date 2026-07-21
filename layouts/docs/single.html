@@ -1,0 +1,64 @@
+{{ define "main" }}
+{{ $section := .CurrentSection.Title }}
+{{ .Scratch.Set "brandSuffix" "docs" }}
+{{ if eq $section "Getting started" }}
+  {{ .Scratch.Set "activeTab" "start" }}
+{{ else }}
+  {{ .Scratch.Set "activeTab" "dev" }}
+{{ end }}
+
+{{/* Build flat page list for prev/next */}}
+{{ $allPages := slice }}
+{{ range site.Menus.getting_started }}
+  {{ with site.GetPage .URL }}{{ $allPages = $allPages | append . }}{{ end }}
+{{ end }}
+{{ range site.Menus.developer_reference }}
+  {{ with site.GetPage .URL }}{{ $allPages = $allPages | append . }}{{ end }}
+{{ end }}
+
+{{ $currentIdx := -1 }}
+{{ range $i, $p := $allPages }}
+  {{ if eq $p.RelPermalink $.RelPermalink }}{{ $currentIdx = $i }}{{ end }}
+{{ end }}
+
+<div class="shell">
+  <aside class="sidebar"><div class="sidebar-scroll">{{ partial "sidebar.html" . }}</div></aside>
+  <main class="doc-main">
+    <article class="doc-column">
+      <div class="crumbs">{{ $section }}<span class="sep">/</span>{{ .Title }}</div>
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ with .Params.description }}<p class="page-desc">{{ . }}</p>{{ end }}
+      <div class="prose">{{ .Content }}</div>
+      <a class="edit-link" href="https://github.com/privateerproj/site" target="_blank" rel="noopener">Edit this page on GitHub &#8599;</a>
+
+      {{ if gt (len $allPages) 0 }}
+      <div class="prev-next">
+        {{ if gt $currentIdx 0 }}
+          {{ $prev := index $allPages (sub $currentIdx 1) }}
+          <a class="prev" href="{{ $prev.RelPermalink }}">
+            <span class="dir">&larr; Previous</span>
+            <span class="name">{{ $prev.Title }}</span>
+          </a>
+        {{ else }}<span></span>{{ end }}
+        {{ if lt $currentIdx (sub (len $allPages) 1) }}
+          {{ $next := index $allPages (add $currentIdx 1) }}
+          <a class="next" href="{{ $next.RelPermalink }}">
+            <span class="dir">Next &rarr;</span>
+            <span class="name">{{ $next.Title }}</span>
+          </a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </article>
+
+    {{ if .TableOfContents }}
+    <aside class="toc">
+      <div class="toc-inner">
+        <h5>On this page</h5>
+        {{ .TableOfContents }}
+      </div>
+    </aside>
+    {{ end }}
+  </main>
+</div>
+{{ end }}

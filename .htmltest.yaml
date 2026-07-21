@@ -1,9 +1,0 @@
-DirectoryIndex: "index.html"
-DirectoryPath: "public"
-EnforceHTTPS: false
-IgnoreURLs:
-- "^/index\\.html$"
-- "index\\.xml"
-IgnoreDirs:
-- "lib"
-CacheExpires: "6h"

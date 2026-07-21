@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Title }} · Privateer Docs</title>
+<meta name="description" content="{{ .Description | default .Summary }}">
+<link rel="stylesheet" href="{{ "style.css" | relURL }}">
+<script>try{if(localStorage.getItem('pvtr-theme')==='dark'||(!localStorage.getItem('pvtr-theme')&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}</script>
+</head>
+<body>
+{{ partial "header.html" . }}
+<div class="drawer-backdrop"></div>
+<aside class="drawer">{{ partial "sidebar.html" . }}</aside>
+
+{{ block "main" . }}{{ end }}
+{{ block "footer" . }}{{ end }}
+
+<div class="search-overlay">
+  <div class="search-panel">
+    <input id="search-input" type="text" placeholder="Search the Privateer docs…" aria-label="Search">
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div>
+
+{{- $searchIndex := resources.Get "search-index.js" -}}
+{{- if $searchIndex -}}
+<script src="{{ $searchIndex.RelPermalink }}"></script>
+{{- end -}}
+
+<script src="{{ "main.js" | relURL }}"></script>
+
+</body>
+</html>

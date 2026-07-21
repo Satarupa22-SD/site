@@ -1,0 +1,138 @@
+baseURL = "/"
+languageCode = "en"
+title = "Privateer Docs"
+enableRobotsTXT = true
+disableKinds = ["RSS"]
+
+[build]
+  noJSConfigInAssets = true
+
+[params]
+  repoURL = "https://github.com/privateerproj"
+  meridianURL = "https://meridian.revanite.io/"
+  # TODO: replace with the real Privateer Slack invite link
+  slackURL = "https://openssf.slack.com/archives/C08NJTFAL74"
+  linkedinURL = "https://www.linkedin.com/company/privateerproj/"
+  brandLogo = "logo/patches-head.png"
+  mascot = "logo/privateer-mascot.png"
+
+  [[params.partners]]
+    name = "LFX Insights"
+    logo = "partners/lfx.svg"
+    href = "https://insights.linuxfoundation.org/"
+    height = "22px"
+
+  [[params.partners]]
+    name = "FINOS CCC"
+    logo = "partners/finos-horizontal.svg"
+    href = "https://ccc.finos.org/"
+    height = "36px"
+
+  [[params.partners]]
+    name = "OpenSSF"
+    logo = "partners/openssf.svg"
+    href = "https://openssf.org/"
+    height = "35px"
+    
+  [[params.partners]]
+    name = "Meridian"
+    logo = "partners/meridian.png"
+    href = "https://meridian.revanite.io/"
+    height = "28px"  
+
+  [[params.fits]]
+    icon = "branch"
+    title = "CI/CD Pipelines"
+    desc = "Validate infrastructure automatically within GitHub Actions, GitLab CI, and Jenkins."
+
+  [[params.fits]]
+    icon = "filecode"
+    title = "Infrastructure as Code"
+    desc = "Ensure Terraform, Kubernetes, and cloud configurations meet compliance standards."
+
+  [[params.fits]]
+    icon = "shield"
+    title = "Policy-as-Code & Compliance"
+    desc = "Enforce governance using automated, policy-driven validation."
+
+  [[params.fits]]
+    icon = "workflow"
+    title = "DevSecOps Workflows"
+    desc = "Embed security and compliance throughout the software delivery lifecycle."
+
+  [[params.fits]]
+    icon = "cloud"
+    title = "Cloud-Native Ecosystem"
+    desc = "Integrate seamlessly with modern cloud and containerized environments."
+
+  [[params.fits]]
+    icon = "puzzle"
+    title = "Open-Source Plugin Framework"
+    desc = "Extend capabilities through community-driven validation plugins."
+
+[menu]
+  [[menu.getting_started]]
+    name = "Introduction to Privateer"
+    url = "/getting-started/introduction/"
+    weight = 1
+  [[menu.getting_started]]
+    name = "Quickstart (5 minutes)"
+    url = "/getting-started/quickstart/"
+    weight = 2
+  [[menu.getting_started]]
+    name = "Installation"
+    url = "/getting-started/installation/"
+    weight = 3
+  [[menu.getting_started]]
+    name = "Your first validation run"
+    url = "/getting-started/first-run/"
+    weight = 4
+  [[menu.getting_started]]
+    name = "Understanding results"
+    url = "/getting-started/results/"
+    weight = 5
+  [[menu.getting_started]]
+    name = "Upgrading Privateer"
+    url = "/getting-started/upgrading/"
+    weight = 6
+
+  [[menu.developer_reference]]
+    name = "CLI reference"
+    url = "/developer-reference/cli-reference/"
+    weight = 1
+  [[menu.developer_reference]]
+    name = "Configuration reference"
+    url = "/developer-reference/configuration/"
+    weight = 2
+  [[menu.developer_reference]]
+    name = "Output schema"
+    url = "/developer-reference/output-schema/"
+    weight = 3
+  [[menu.developer_reference]]
+    name = "Build your first plugin"
+    url = "/developer-reference/build-a-plugin/"
+    weight = 4
+  [[menu.developer_reference]]
+    name = "GitHub Actions integration"
+    url = "/developer-reference/github-actions/"
+    weight = 5
+  [[menu.developer_reference]]
+    name = "Plugin catalog"
+    url = "/developer-reference/plugin-catalog/"
+    weight = 6
+  [[menu.developer_reference]]
+    name = "Troubleshooting"
+    url = "/developer-reference/troubleshooting/"
+    weight = 7
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[outputs]
+  home = ["HTML", "JSON"]

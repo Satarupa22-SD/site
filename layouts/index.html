@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{ .Scratch.Set "brandSuffix" "home" }}
+{{ .Scratch.Set "activeTab" "home" }}
+<section class="home-hero">
+  <div class="home-hero-inner">
+    <div class="home-hero-copy">
+      <div class="hero-badges">
+        <span>Open Source</span><span>DevSecOps Ready</span><span>Policy-as-Code</span><span>CI/CD Integrated</span>
+      </div>
+      <h1>Automate Infrastructure <span class="accent">Validation &amp; Compliance</span></h1>
+      <p class="sub">Privateer empowers teams to test, secure, and validate infrastructure using policy-driven automation and community-powered plugins.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="{{ .Site.Params.repoURL }}" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+    </div>
+    <div class="hero-mascot"><div class="glow"><img src="{{ .Site.Params.mascot | relURL }}" alt="Privateer mascot"></div></div>
+  </div>
+</section>
+
+<section class="used-by">
+  <div class="used-by-inner">
+    <h2>Trusted and used by</h2>
+    <div class="logos tier-row">
+      {{ range .Site.Params.partners }}
+      <a href="{{ .href }}" target="_blank" rel="noopener" aria-label="{{ .name }}">
+        <img src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" style="height:{{ .height }}">
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="fits">
+  <div class="fits-head">
+    <h2>Where Privateer <span class="accent">Fits</span></h2>
+    <p>Seamlessly integrated into your DevSecOps and cloud-native workflows.</p>
+  </div>
+  <div class="card-grid cols-3">
+    {{ range .Site.Params.fits }}
+    <div class="card fit-card">
+      <div class="fit-icon">{{ partial "fit-icon.html" .icon }}</div>
+      <h3>{{ .title }}</h3>
+      <p>{{ .desc }}</p>
+    </div>
+    {{ end }}
+  </div>
+  <div class="fits-cta"><a class="btn btn-primary" href="{{ "library/" | relURL }}">Explore Documentation &rarr;</a></div>
+</section>
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "rich-footer.html" . }}
+{{ end }}

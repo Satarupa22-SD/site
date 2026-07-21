@@ -1,0 +1,21 @@
+{{ $brandSuffix := .Scratch.Get "brandSuffix" | default "docs" }}
+{{ $activeTab := .Scratch.Get "activeTab" | default "" }}
+<header class="site-header">
+  <div class="header-inner">
+    <button id="menu-btn" class="icon-btn" aria-label="Open navigation">{{ partial "icons/menu.html" }}</button>
+    <a class="brand" href="{{ "/" | relURL }}"><img class="logo" src="{{ .Site.Params.brandLogo | relURL }}" alt="" height="26">privateer <span class="docs">/ {{ $brandSuffix }}</span></a>
+    <div class="header-search">
+      <button class="search-trigger" data-search-open>{{ partial "icons/search.html" }}<span>Search docs&hellip;</span><kbd>Ctrl K</kbd></button>
+    </div>
+    <nav class="header-tabs">
+      <a href="{{ "/" | relURL }}"{{ if eq $activeTab "home" }} class="active"{{ end }}>Home</a>
+      <a href="{{ "library/" | relURL }}"{{ if eq $activeTab "library" }} class="active"{{ end }}>Library</a>
+      <a href="{{ "getting-started/introduction/" | relURL }}"{{ if eq $activeTab "start" }} class="active"{{ end }}>Getting started</a>
+      <a href="{{ "developer-reference/cli-reference/" | relURL }}"{{ if eq $activeTab "dev" }} class="active"{{ end }}>Developer reference</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-btn" class="icon-btn" aria-label="Toggle theme">{{ partial "icons/sun.html" }}{{ partial "icons/moon.html" }}</button>
+      <a class="icon-btn" href="{{ .Site.Params.repoURL }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "icons/github.html" }}</a>
+    </div>
+  </div>
+</header>

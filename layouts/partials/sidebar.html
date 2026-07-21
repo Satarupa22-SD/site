@@ -1,0 +1,17 @@
+{{ $currentURL := .RelPermalink }}
+<div class="nav-group">
+  <h4>Getting started</h4>
+  <ul>
+    {{ range .Site.Menus.getting_started }}
+    <li><a href="{{ .URL | relURL }}"{{ if eq (urls.Parse (.URL | relURL)).Path $currentURL }} class="active"{{ end }}>{{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+<div class="nav-group">
+  <h4>Developer reference</h4>
+  <ul>
+    {{ range .Site.Menus.developer_reference }}
+    <li><a href="{{ .URL | relURL }}"{{ if eq (urls.Parse (.URL | relURL)).Path $currentURL }} class="active"{{ end }}>{{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+</div>
