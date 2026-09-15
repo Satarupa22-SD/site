@@ -95,7 +95,7 @@ pvtr generate-plugin \
 | `--output-dir` | `-o` | `generated-plugin/` | Output directory |
 | `--local-templates` |  |  | Use a local templates directory instead of fetching latest |
 
-The generated code will not compile without filling in the TODO placeholders. See [Build your first plugin](build-a-plugin.html).
+The generated plugin compiles as emitted, with every requirement bound to a `NotImplemented` placeholder step. See [Build your first plugin](build-a-plugin.html).
 
 ## pvtr completion
 
