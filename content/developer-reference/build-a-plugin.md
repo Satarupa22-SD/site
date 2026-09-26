@@ -47,7 +47,7 @@ my-plugin/
   go.mod                           # pins privateer-sdk and go-gemara
   data/
     data_collection.go             # Payload and Loader
-    catalogs/catalog_<id>_<ver>.yaml  # your catalog, embedded at build time
+    catalogs/catalog_<id>_<ver>.yaml  # your catalog, vendored in the binary
   evaluation_plans/
     evaluation_plans.go            # TypedStep, and Suite_<id>: requirement id -> step chain
     reusable_steps/steps.go        # NotImplemented placeholder
@@ -57,6 +57,15 @@ my-plugin/
 
 Every requirement id in the catalog is already in `Suite_<id>`, bound to
 `reusable_steps.NotImplemented`. Replacing those bindings is the work.
+
+The scaffold vendors the catalog with `AddReferenceCatalogs`, so the binary is
+self-contained. If the catalog is published on grc.store, you can declare it by
+coordinate with `AddCatalogs("<namespace>/<id>@<version>")` instead and drop the
+YAML from `data/catalogs/`. `pvtr install` then fetches, verifies, and caches the
+catalog next to the plugin binary, and `pvtr run` reads it from that cache, so
+the plugin never contacts grc.store after install. Both options remain
+supported; vendoring is fine for catalogs that are not on grc.store or that you
+want pinned in the binary.
 
 ## Step 3: Write the loader
 

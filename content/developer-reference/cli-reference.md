@@ -45,6 +45,8 @@ pvtr install pvtr-github-repo-scanner --binaries-path /opt/pvtr-plugins
 
 For plugins not in the registry, place the binary manually and verify with `pvtr list -a`.
 
+A plugin that declares its control catalogs as grc.store coordinates (via `AddCatalogs` in the SDK) has each catalog fetched, signature-verified, and cached under the binaries path at install time, at `<binaries-path>/catalogs/<namespace>/<id>/<version>.yaml`. `pvtr run` reads that cache and never contacts grc.store, so once a plugin is installed no further network access to grc.store is required. A published catalog version is immutable, so a cached file is never re-fetched. Plugins may instead continue to vendor their catalogs in the binary (via `AddReferenceCatalogs`); those need no catalog cache at all.
+
 ## pvtr list
 
 Reports which plugins are referenced by the current config and whether each is present in the binaries path.
