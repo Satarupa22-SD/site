@@ -59,6 +59,8 @@ services:
 | `invasive` | boolean | `false` | Permit plugins to modify infrastructure |
 | `policy` | object |  | Global policy; overridable per service |
 | `vars` | object |  | Global variables; overridable per service |
+| `plugin` | string |  | Global plugin name; used by any service that does not set its own |
+| `version` | string |  | Global plugin version pin; used by any service that does not set its own |
 
 ## Service settings
 
@@ -66,7 +68,8 @@ Each key under `services` is a unique service name matched against the `--servic
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `plugin` | string | Yes | Binary filename, case-sensitive, no path, no extension |
+| `plugin` | string | Yes, unless set globally | Binary filename, case-sensitive, no path, no extension |
+| `version` | string | No | Plugin version pin; overrides global `version` |
 | `test-suites` | array | No | Suites to run (default: `["default"]`) |
 | `loglevel` | string | No | Per-service log verbosity override |
 | `vars` | object | No | Service-specific variables |
@@ -98,7 +101,7 @@ policy:
     - Maturity Level 1    # applicability tier filter
 ```
 
-Service-level policy fully replaces global policy; it does not merge. Policy is required when running via Core outside of plugin debug mode. Invalid catalog or applicability values produce an error at startup, not at evaluation time.
+Each policy field falls back independently: a service that sets only `catalogs` still inherits the global `applicability`, and vice versa. Within a field, the service value fully replaces the global list; lists are never merged. Policy is required when running via Core outside of plugin debug mode. Invalid catalog or applicability values produce an error at startup, not at evaluation time.
 
 ## invasive flag
 
