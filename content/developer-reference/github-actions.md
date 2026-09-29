@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Privateer
         run: |
-          /bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/privateer/main/install.sh)"
+          /bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/pvtr/main/install.sh)"
 
       - name: Install plugin
         run: pvtr install pvtr-github-repo

@@ -10,7 +10,7 @@ Choose the option that matches your platform. **The install script (Option 1) is
 ## Option 1: Install via script (macOS / Linux / WSL)
 
 ```bash
-/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/privateer/main/install.sh)"
+/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/pvtr/main/install.sh)"
 ```
 
 The script handles the full installation automatically: it detects your OS and architecture, downloads the latest release binary, verifies the checksum, and adds `pvtr` to your PATH. No manual steps required.
@@ -25,7 +25,7 @@ pvtr version
 
 ## Option 2: Download from GitHub Releases
 
-Visit the [releases page](https://github.com/privateerproj/privateer/releases) and download the archive for your platform.
+Visit the [releases page](https://github.com/privateerproj/pvtr/releases) and download the archive for your platform.
 
 **Linux and macOS:**
 
@@ -45,7 +45,7 @@ mkdir -p $HOME/.privateer/bin
 
 **Windows (PowerShell):**
 
-1. Download `pvtr_Windows_x86_64.zip` from the [releases page](https://github.com/privateerproj/privateer/releases) and extract it.
+1. Download `pvtr_Windows_x86_64.zip` from the [releases page](https://github.com/privateerproj/pvtr/releases) and extract it.
 2. From the extracted folder, create a `bin` directory, move `pvtr.exe` into it, and add it to your PATH:
 
 ```powershell
@@ -79,8 +79,8 @@ Use this option if you want to run the latest unreleased code or contribute to P
 
 ```bash
 # Clone the repository
-git clone https://github.com/privateerproj/privateer.git
-cd privateer
+git clone https://github.com/privateerproj/pvtr.git
+cd pvtr
 
 # Download dependencies
 go mod tidy
@@ -95,8 +95,8 @@ cp pvtr /usr/local/bin/pvtr
 **Windows (PowerShell):** `make` and `bash` aren't available by default, so build directly with Go:
 
 ```powershell
-git clone https://github.com/privateerproj/privateer.git
-cd privateer
+git clone https://github.com/privateerproj/pvtr.git
+cd pvtr
 go mod tidy
 go build -o pvtr.exe .
 .\pvtr.exe version

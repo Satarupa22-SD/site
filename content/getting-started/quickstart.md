@@ -16,10 +16,10 @@ This guide helps you run your first validation test. Before you start, make sure
 *macOS / Linux / WSL:*
 
 ```bash
-/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/privateer/main/install.sh)"
+/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/pvtr/main/install.sh)"
 ```
 
-*Windows:* the script above won't run in PowerShell. Download `pvtr_Windows_x86_64.zip` from the [releases page](https://github.com/privateerproj/privateer/releases), then:
+*Windows:* the script above won't run in PowerShell. Download `pvtr_Windows_x86_64.zip` from the [releases page](https://github.com/privateerproj/pvtr/releases), then:
 
 ```powershell
 mkdir $HOME\bin -Force

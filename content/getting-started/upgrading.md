@@ -10,7 +10,7 @@ description: Keep the pvtr binary and your plugins up to date.
 The install script always fetches the latest release and replaces the existing binary in place:
 
 ```bash
-/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/privateer/main/install.sh)"
+/bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/privateerproj/pvtr/main/install.sh)"
 ```
 
 **Windows:** this script doesn't run in PowerShell. Use Option 2 below if you are using PowerShell.
@@ -23,7 +23,7 @@ pvtr version
 
 ## Option 2: Replace the binary manually
 
-Download the latest archive from the [releases page](https://github.com/privateerproj/privateer/releases) and replace the existing binary.
+Download the latest archive from the [releases page](https://github.com/privateerproj/pvtr/releases) and replace the existing binary.
 
 *Linux / macOS* replace it at the same path it was installed to:
 
