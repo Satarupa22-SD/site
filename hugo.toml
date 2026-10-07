@@ -11,7 +11,7 @@ disableKinds = ["RSS"]
   repoURL = "https://github.com/privateerproj"
   meridianURL = "https://meridian.revanite.io/"
   # TODO: replace with the real Privateer Slack invite link
-  slackURL = "https://openssf.slack.com/archives/C08NJTFAL74"
+  slackURL = "https://openssf.slack.com/archives/C0C78K9DB1A"
   linkedinURL = "https://www.linkedin.com/company/privateerproj/"
   brandLogo = "logo/patches-head.png"
   mascot = "logo/privateer-mascot.png"
